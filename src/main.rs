@@ -19,7 +19,7 @@ fn main() {
             io::stdin()
                 .read_line(&mut temperature_input)
                 .expect("Failed to read temperature input");
-            let mut temperature_to_convert: f64 = temperature_input
+            let temperature_to_convert: f64 = temperature_input
                 .trim()
                 .parse()
                 .expect("Failed to convert temp string to float");
