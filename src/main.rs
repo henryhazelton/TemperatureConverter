@@ -23,7 +23,7 @@ fn main() {
                 .trim()
                 .parse()
                 .expect("Failed to convert temp string to float");
-            let fahrenheit_result = (temperature_to_convert * 2.0) + 30.0;
+            let fahrenheit_result = (temperature_to_convert * 1.8) + 32.0;
             println!(
                 "{} Degrees Celcius to Fahrenheit is {} Fahrenheit",
                 temperature_input.trim(),
