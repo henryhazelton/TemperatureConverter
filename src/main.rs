@@ -25,12 +25,31 @@ fn main() {
                 .expect("Failed to convert temp string to float");
             let fahrenheit_result = (temperature_to_convert * 1.8) + 32.0;
             println!(
-                "{} Degrees Celcius to Fahrenheit is {} Fahrenheit",
+                "{} Degrees Celcius to Fahrenheit is {} Degrees Fahrenheit",
                 temperature_input.trim(),
                 fahrenheit_result
             );
         }
-        "2" => println!("Converting Fahrenheit to Celsius"),
-        _ => println!("Invalid choice!"),
+        "2" => {
+            println!("Converting Fahrenheit to Celsius");
+            println!("Enter the temperature in Fahrenheit you would like to convert:");
+            let mut temperature_input = String::new();
+            io::stdin()
+                .read_line(&mut temperature_input)
+                .expect("Failed to read temperature input");
+            let temperature_to_convert: f64 = temperature_input
+                .trim()
+                .parse()
+                .expect("Failed to convert temp string to float");
+            let celcius_result = (temperature_to_convert - 32.0) / 1.8;
+            println!(
+                "{} Degrees Fahrenheit is {} Degrees Celcius",
+                temperature_input.trim(),
+                celcius_result
+            );
+        }
+        _ => {
+            println!("Invalid choice!")
+        }
     }
 }
