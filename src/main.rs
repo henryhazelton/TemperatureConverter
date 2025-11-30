@@ -1,4 +1,7 @@
 use std::io;
+mod functions;
+use functions::convert_string_to_float;
+use functions::get_temp_input;
 
 fn main() {
     println!("Welcome to the temp converter, what do you need converting?");
@@ -15,37 +18,25 @@ fn main() {
         "1" => {
             println!("Converting Celsius to Fahrenheit");
             println!("Enter the temperature in Celcius you would like to convert:");
-            let mut temperature_input = String::new();
-            io::stdin()
-                .read_line(&mut temperature_input)
-                .expect("Failed to read temperature input");
-            let temperature_to_convert: f64 = temperature_input
-                .trim()
-                .parse()
-                .expect("Failed to convert temp string to float");
+            let temp_input = get_temp_input();
+            let temperature_to_convert = convert_string_to_float(&temp_input);
             let fahrenheit_result = (temperature_to_convert * 1.8) + 32.0;
             println!(
                 "{} Degrees Celcius to Fahrenheit is {} Degrees Fahrenheit",
-                temperature_input.trim(),
-                fahrenheit_result
+                temp_input.trim(),
+                fahrenheit_result.round()
             );
         }
         "2" => {
             println!("Converting Fahrenheit to Celsius");
             println!("Enter the temperature in Fahrenheit you would like to convert:");
-            let mut temperature_input = String::new();
-            io::stdin()
-                .read_line(&mut temperature_input)
-                .expect("Failed to read temperature input");
-            let temperature_to_convert: f64 = temperature_input
-                .trim()
-                .parse()
-                .expect("Failed to convert temp string to float");
+            let temp_input = get_temp_input();
+            let temperature_to_convert = convert_string_to_float(&temp_input);
             let celcius_result = (temperature_to_convert - 32.0) / 1.8;
             println!(
                 "{} Degrees Fahrenheit is {} Degrees Celcius",
-                temperature_input.trim(),
-                celcius_result
+                temp_input,
+                celcius_result.round()
             );
         }
         _ => {
